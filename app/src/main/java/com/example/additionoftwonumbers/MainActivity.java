@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.concurrent.ExecutionException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,14 +19,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculate(View view){
     //listeners
-        TextView maintext = (TextView) findViewById(R.id.mainText);
-        EditText input1 = (EditText) findViewById(R.id.input1);
-        EditText input2 = (EditText) findViewById(R.id.input2);
+        try {
+            TextView maintext = (TextView) findViewById(R.id.mainText);
+            EditText input1 = (EditText) findViewById(R.id.input1);
+            EditText input2 = (EditText) findViewById(R.id.input2);
 
-        int a = Integer.parseInt(input1.getText().toString());
-        int b = Integer.parseInt(input2.getText().toString());
-        int c = a+b;
-        maintext.setText(c);
+            int a = Integer.parseInt(input1.getText().toString());
+            int b = Integer.parseInt(input2.getText().toString());
+            int c = a + b;
+
+
+            maintext.setText("Sum ="+c);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }
